@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Card Game</title>
+	<script src="static/utility.js"></script>
+  </head>
+  <style>
+      .welcome{
+          font-size: 50px;
+          /* background-color: rgb(98, 0, 0); */
+          color: rgb(255, 255, 255);
+          font-weight: bold;
+      }
+      .view{
+          display: flex;
+      }
+      .turn{
+          margin-bottom: -13px;
+      }
+      .cards{
+          height: 400px;
+          width: 900px;
+      }
+      .row{
+          margin-left: 10px;
+          color: rgb(68, 235, 68);
+      }
+     body{ 
+         background-image:url("{{url_for('static', filename='img2.jpg')}}"); 
+         background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;      
+    }
+    .continue,.replay{
+        display: none;
+        position: absolute;
+        top: 150px;
+        left: 170px;
+        color:cyan;
+        font-size: 40px;
+
+    }
+    .continue input,.replay input{
+        font-size: 30px;
+        color: rgb(245, 245, 245);
+        height: 80px; 
+        width: 150px;
+        background-color: rgb(255, 157, 0);
+         border-radius: 150px;cursor: pointer;
+          box-shadow: 0px 0px 30px rgb(218, 213, 213);
+           font-family:sans-serif;
+    }
+    input.play{
+        font-size: 36px;
+        color: rgb(255, 255, 255);
+        height: 150px; 
+        width: 150px;
+        background-color: rgb(255, 21, 0);
+         border-radius: 150px;cursor: pointer;
+          box-shadow: 0px 0px 30px rgb(218, 213, 213);
+           font-family:sans-serif;
+           position: absolute;
+            top: 390px;
+           left: 600px;
+    }
+    input.next{
+        font-size: 30px;
+        color: rgb(245, 245, 245);
+        height: 80px; 
+        width: 150px;
+        background-color: rgb(255, 157, 0);
+         border-radius: 150px;cursor: pointer;
+          box-shadow: 0px 0px 30px rgb(218, 213, 213);
+           font-family:sans-serif;
+           position: absolute;
+           top: 520px;
+           left: 1030px;
+    }
+    input.play:hover,input.next:hover,.continue input:hover,.replay input:hover{
+        background-color: white;
+        color: red;
+        box-shadow: 0px 0px 30px rgb(51, 255, 0);
+    }
+    input.card1{
+        background-image: -webkit-linear-gradient(green,red,rgb(204, 160, 160));
+        height: 150px;
+        width: 80px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px white;
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 20px;
+    }
+    .card1:hover,.card2:hover,.card3:hover,.card4:hover{
+        transform: scale(1.3);
+        transition: 0.2s;
+    }
+    input.card2{
+        background-image: -webkit-linear-gradient(rgb(240, 238, 119),rgb(0, 255, 0),rgb(124, 209, 136));
+        height: 150px;
+        width: 80px;
+        border-radius: 10px;
+        box-shadow:0px 0px 10px white;
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 20px;
+    }
+    input.card3{
+        background-image: -webkit-linear-gradient(rgb(103, 214, 155),rgb(255, 251, 0),rgb(200, 231, 114));
+        height: 150px;
+        width: 80px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px white;
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 20px;
+    }
+    input.card4{
+        background-image: -webkit-linear-gradient(rgb(138, 147, 177),rgb(255, 0, 212),rgb(228, 133, 223));
+        height: 150px;
+        width: 80px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px white;
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 20px;
+    }
+    .done{
+        font-size: 30px;
+        color: red;
+        position: absolute;
+        top: 300px;
+        left: 600px;
+    }
+    
+  </style>
+  <body>
+	<marquee  class="welcome" scrollamount="10"  direction="left">Welcome to Card Game</marquee>
+   <h3 id="turn" class="turn" style="visibility: hidden;color: rgb(125, 238, 91); font-size: 34px; margin-left: 230px;">Your Turn! Choose a Card: </h3> &nbsp; 
+   <div class="view">
+<div class="cards" id="cards" style="display: block;">
+   <input class="card1" style="display: none;"id="114" type="button" class="btn btn-sm" onclick="cards('cards',114)" value="SA" >
+   <input class="card1" style="display: none;"id="113" type="button" class="btn btn-sm" onclick="cards('cards',113)" value="SK">
+   <input class="card1" style="display: none;" id="112" type="button" class="btn btn-sm" onclick="cards('cards',112)" value="SQ">
+   <input class="card1" style="display: none;" id="111" type="button" class="btn btn-sm" onclick="cards('cards',111)" value="SJ">
+   <input class="card1" style="display: none;" id="110" type="button" class="btn btn-sm" onclick="cards('cards',110)" value="S10">
+   <input class="card1" style="display: none;" id="109" type="button" class="btn btn-sm" onclick="cards('cards',109)" value="S9">
+   <input class="card1" style="display: none;" id="108" type="button" class="btn btn-sm" onclick="cards('cards',108)" value="S8">
+   <input class="card1" style="display: none;" id="107" type="button" class="btn btn-sm" onclick="cards('cards',107)" value="S7">
+   <input class="card1" style="display: none;" id="106" type="button" class="btn btn-sm" onclick="cards('cards',106)" value="S6">
+   <input class="card1" style="display: none;" id="105" type="button" class="btn btn-sm" onclick="cards('cards',105)" value="S5">
+   <input class="card1" style="display: none;" id="104" type="button" class="btn btn-sm" onclick="cards('cards',104)" value="S4">
+   <input class="card1" style="display: none;" id="103" type="button" class="btn btn-sm" onclick="cards('cards',103)" value="S3">
+   <input class="card1" style="display: none;" id="102" type="button" class="btn btn-sm" onclick="cards('cards',102)" value="S2">
+   <input class="card1" style="display: none;" id="101" type="button" class="btn btn-sm" onclick="cards('cards',101)" value="S1">
+   <input class="card2" style="display: none;" id="214" type="button" class="btn btn-sm" onclick="cards('cards',214)" value="CA">
+   <input class="card2" style="display: none;" id="213" type="button" class="btn btn-sm" onclick="cards('cards',213)" value="CK">
+   <input class="card2" style="display: none;" id="212" type="button" class="btn btn-sm" onclick="cards('cards',212)" value="CQ">
+   <input class="card2" style="display: none;" id="211" type="button" class="btn btn-sm" onclick="cards('cards',211)" value="CJ">
+   <input class="card2" style="display: none;" id="210" type="button" class="btn btn-sm" onclick="cards('cards',210)" value="C10">
+   <input class="card2" style="display: none;" id="209" type="button" class="btn btn-sm" onclick="cards('cards',209)" value="C9">
+   <input class="card2" style="display: none;" id="208" type="button" class="btn btn-sm" onclick="cards('cards',208)" value="C8">
+   <input class="card2" style="display: none;" id="207" type="button" class="btn btn-sm" onclick="cards('cards',207)" value="C7">
+   <input class="card2" style="display: none;" id="206" type="button" class="btn btn-sm" onclick="cards('cards',206)" value="C6">
+   <input class="card2" style="display: none;" id="205" type="button" class="btn btn-sm" onclick="cards('cards',205)" value="C5">
+   <input class="card2" style="display: none;" id="204" type="button" class="btn btn-sm" onclick="cards('cards',204)" value="C4">
+   <input class="card2" style="display: none;" id="203" type="button" class="btn btn-sm" onclick="cards('cards',203)" value="C3">
+   <input class="card2" style="display: none;" id="202" type="button" class="btn btn-sm" onclick="cards('cards',202)" value="C2">
+   <input class="card2" style="display: none;" id="201" type="button" class="btn btn-sm" onclick="cards('cards',201)" value="C1">
+   <input class="card3" style="display: none;" id="314" type="button" class="btn btn-sm" onclick="cards('cards',314)" value="DA">
+   <input class="card3" style="display: none;" id="313" type="button" class="btn btn-sm" onclick="cards('cards',313)" value="DK">
+   <input class="card3" style="display: none;" id="312" type="button" class="btn btn-sm" onclick="cards('cards',312)" value="DQ">
+   <input class="card3" style="display: none;" id="311" type="button" class="btn btn-sm" onclick="cards('cards',311)" value="DJ">
+   <input class="card3" style="display: none;" id="310" type="button" class="btn btn-sm" onclick="cards('cards',310)" value="D10">
+   <input class="card3" style="display: none;" id="309" type="button" class="btn btn-sm" onclick="cards('cards',309)" value="D9">
+   <input class="card3" style="display: none;" id="308" type="button" class="btn btn-sm" onclick="cards('cards',308)" value="D8">
+   <input class="card3" style="display: none;" id="307" type="button" class="btn btn-sm" onclick="cards('cards',307)" value="D7">
+   <input class="card3" style="display: none;" id="306" type="button" class="btn btn-sm" onclick="cards('cards',306)" value="D6">
+   <input class="card3" style="display: none;" id="305" type="button" class="btn btn-sm" onclick="cards('cards',305)" value="D5">
+   <input class="card3" style="display: none;" id="304" type="button" class="btn btn-sm" onclick="cards('cards',304)" value="D4">
+   <input class="card3" style="display: none;" id="303" type="button" class="btn btn-sm" onclick="cards('cards',303)" value="D3">
+   <input class="card3" style="display: none;" id="302" type="button" class="btn btn-sm" onclick="cards('cards',302)" value="D2">
+   <input class="card3" style="display: none;" id="301" type="button" class="btn btn-sm" onclick="cards('cards',301)" value="D1">
+   <input class="card4" style="display: none;" id="414" type="button" class="btn btn-sm" onclick="cards('cards',414)" value="HA">
+   <input class="card4" style="display: none;" id="413" type="button" class="btn btn-sm" onclick="cards('cards',413)" value="HK">
+   <input class="card4" style="display: none;" id="412" type="button" class="btn btn-sm" onclick="cards('cards',412)" value="HQ">
+   <input class="card4" style="display: none;" id="411" type="button" class="btn btn-sm" onclick="cards('cards',411)" value="HJ">
+   <input class="card4" style="display: none;" id="410" type="button" class="btn btn-sm" onclick="cards('cards',410)" value="H10">
+   <input class="card4" style="display: none;" id="409" type="button" class="btn btn-sm" onclick="cards('cards',409)" value="H9">
+   <input class="card4" style="display: none;" id="408" type="button" class="btn btn-sm" onclick="cards('cards',408)" value="H8">
+   <input class="card4" style="display: none;" id="407" type="button" class="btn btn-sm" onclick="cards('cards',407)" value="H7">
+   <input class="card4" style="display: none;" id="406" type="button" class="btn btn-sm" onclick="cards('cards',406)" value="H6">
+   <input class="card4" style="display: none;" id="405" type="button" class="btn btn-sm" onclick="cards('cards',405)" value="H5">
+   <input class="card4" style="display: none;" id="404" type="button" class="btn btn-sm" onclick="cards('cards',404)" value="H4">
+   <input class="card4" style="display: none;" id="403" type="button" class="btn btn-sm" onclick="cards('cards',403)" value="H3">
+   <input class="card4" style="display: none;" id="402" type="button" class="btn btn-sm" onclick="cards('cards',402)" value="H2">
+   <input class="card4" style="display: none;" id="401" type="button" class="btn btn-sm" onclick="cards('cards',401)" value="H1">
+   <input class="next"style="display: none;" id="1" type="button" onclick="cards('cards',1)" value="Go next">
+   
+</div>
+<div class="row" >
+    <div class="col-md-8" align="left" style="float:left; color: rgb(121, 234, 238); font-size: large; margin-top: 0.45cm; font-family:Verdana, Geneva, Tahoma, sans-serif;" id="output_div">
+    </div>
+</div>
+</div>
+  <input class="play"  id="0" type="button" onclick="cards('cards',0)" value="Play">
+  
+   
+    <div class="continue" id="continue">
+        <h2>Do you want to continue ?</h2>
+    <input class="yes"  id="yes" type="button" onclick="cards('cards','yes')" value="Yes">
+    <input class="no"  id="no" type="button" onclick="cards('cards','no')" value="No">
+
+    </div>
+    <div class="replay" id="replay">
+        <h2>Thanks for Playing</h2>
+        
+    <input style="padding-left: 40px;" class="r"  id="r" type="r" onclick="cards('cards','r')" value="Replay">
+   
+    </div>
+  
+ 
+		
+</body>
+</html>

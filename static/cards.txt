@@ -1,0 +1,17 @@
+"user's player no:"=3.
+"cards of bot1:"=[[102,106,107,112],[202,205,206],[306,310,311],[402,405,409]].
+"cards of bot2:"=[[104, 109, 113], [203, 209, 211, 214], [304], [403, 408, 410, 412, 414]].
+"cards of player:"=[[103, 108, 114], [207, 208, 210, 213], [305, 312, 314], [404, 407, 411]].
+"cards of bot4:"=[[105,110,111], [204, 212], [302, 303, 307, 308, 309, 313], [406, 413]].
+
+
+// Here first digits of each cards denotes the the suit of that card 
+// And the last two digits denotes the no on cards
+// In case of Jack the last two digits are 11
+// In case of Queen the last two digits are 12
+// In case of King the last two digits are 13
+// In case of Ace the last two digits are 14
+
+
+
+

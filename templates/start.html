@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Card Game</title>
+	<script src="static/utility.js"></script>
+    <style>
+        .welcome{
+          font-size: 50px;
+          /* background-color: rgb(98, 0, 0); */
+          color: rgb(0, 0, 0);
+          font-weight: bold;
+      }
+        input.lets{
+        font-size: 36px;
+        color: rgb(255, 255, 255);
+        height: 150px; 
+        width: 150px;
+        background-color: rgb(255, 21, 0);
+         border-radius: 150px;cursor: pointer;
+          box-shadow: 0px 0px 30px rgb(218, 213, 213);
+           font-family:sans-serif;
+           position: absolute;
+            top: 390px;
+           left: 600px;
+    }
+    .lets:hover{
+        background-color: white;
+        color: red;
+        box-shadow: 0px 0px 30px rgb(51, 255, 0);
+  
+    }
+    </style>
+  </head>
+  <body>
+    <marquee  class="welcome" scrollamount="10"  direction="left">Welcome to Card Game</marquee>
+
+    <center style="margin-top: 50px;"><h2>This game is highly addictive please play at your own risk!!</h2>
+    <input class="lets" type="button" onclick="start('home','g')" value="Let's Go"></center>
+  </body>
+  </html>
