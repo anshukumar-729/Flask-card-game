@@ -1,18 +1,15 @@
 import json
-import random
 from flask import Flask, render_template, request, jsonify
 from flask.wrappers import Response
-
 app = Flask(__name__)
-
-@app.route("/home")
+@app.route("/home" )
 def home():
-    return render_template("Home.html")   
-@app.route("/zone" )
-def zone():
     return render_template("InputOutput.html")  
+@app.route("/go")
+def form():
+    return render_template("home.html")   
 @app.route("/")
-def start():
+def go():
     return render_template("start.html")  
 
 @app.route("/call", methods=["POST"])
@@ -22,9 +19,10 @@ def processJSON2():
     jsonObj = json.loads(jsonStr)
     value=(jsonObj["mycall"])
     cards=[114,113,112,111,110,109,108,107,106,105,104,103,102,214,213,212,211,210,209,208,207,206,205,204,203,202,314,313,312,311,310,309,308,307,306,305,304,303,302,414,413,412,411,410,409,408,407,406,405,404,403,402]
-    
+
     if(value=="n"):
         random.shuffle(cards)
+
         k=0
         for i in range(4):
             for j in range(13):
@@ -78,6 +76,8 @@ def processJSON2():
         win=0
         ind2=0
         cds=""
+        
+
         dic["count"]=0
         dic["start"]=1
         dic["pn"]=1
@@ -204,7 +204,6 @@ def processJSON2():
             dic["cp"]=str(value)
         else:
             dic["cp"]=str(0)+str(value)
-            print(dic)
         return "start"
                 
 
@@ -217,7 +216,7 @@ def processJSON():
     jsonStr = request.get_json()
     jsonObj = json.loads(jsonStr)
     value=(jsonObj['value'])
-    print(dic)
+    
     if(value=="yes"):
         return "yes"
     elif(value=="no"):
@@ -373,9 +372,7 @@ if __name__ == "__main__":
 # like if a no is 110 then the 1st dugut denote the suit and the last two digits denote the cardno
 # where 11 stands for joker 12 for queen 13 for king and 14 for ace
     random.shuffle(cards)
-    global p
     p=[[[]]*4 for i in range(4)]
-    global player
     player=[[0]*13 for i in range(4)]
 
     k=0
@@ -433,7 +430,6 @@ if __name__ == "__main__":
     cds=""
     
 
-    global dic 
     dic={"count":0,"start":1,"pn":1,"i":0,"round":0,"win":0,"ind2":0,"up":up,"ma":0,"ind":ind,"pl":0,"card":"000","c":0}
 
     app.run(debug=True)
