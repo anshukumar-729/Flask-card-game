@@ -38,6 +38,8 @@ function call(targetURL) {
 function start(targetURL,ch) {
 	//Marshelling into JSON
 	if(ch=="g"){
+		console.log("go to go")
+		window.location.href = "./go";
 		localStorage.clear();
 		localStorage.setItem("res10","")
 		localStorage.setItem("res11","")
@@ -47,8 +49,6 @@ function start(targetURL,ch) {
 		localStorage.setItem("res21",0)
 		localStorage.setItem("res22",0)
 		localStorage.setItem("res23",0)
-		window.location.href = "./home";
-		
 	}
 	
 	var dataToBeSent = "{";
@@ -103,7 +103,7 @@ function showOutput2(output){
 	}
 	if(output=="start"){
 		
-	window.location.href = "./zone";
+	window.location.href = "./home";
 	}
 	for (let i=0;i<output.length;i++){
 		
@@ -227,7 +227,7 @@ function showOutput(output){
 		rnd=0
 		out=""
 		next=""
-		window.location.href = "./home";
+		window.location.href = "./go";
 	}
 	else if(output=="no"){
 		document.getElementById("continue").style.display="none";
