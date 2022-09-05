@@ -1,7 +1,7 @@
 import json
 from flask import Flask, render_template, request, jsonify
 from flask.wrappers import Response
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 @app.route("/home" )
 def home():
     return render_template("InputOutput.html")  
